@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Antrian - Kantor Pelayanan Administrasi Kependudukan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-header">
+                <div class="logo">
+                    <i class="fas fa-users"></i>
+                    <span>ANTRIAN</span>
+                </div>
+                <h1>Sistem Antrian Pelayanan Administrasi Kependudukan</h1>
+                <div class="date-time">
+                    <div id="current-date"></div>
+                    <div id="current-time"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <!-- Panel Admin -->
+                <section class="admin-panel">
+                    <h2><i class="fas fa-user-cog"></i> Panel Admin</h2>
+                    
+                    <div class="control-panel">
+                        <div class="queue-control">
+                            <h3>Kontrol Antrian</h3>
+                            <div class="queue-input">
+                                <label for="queue-number">Nomor Antrian</label>
+                                <div class="input-group">
+                                    <input type="text" id="queue-number" value="A101" maxlength="4">
+                                    <button class="btn-secondary" id="prev-queue"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
+                                    <button class="btn-secondary" id="next-queue">Selanjutnya <i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="counter-control">
+                                <button class="btn-counter" id="decrement-queue"><i class="fas fa-minus"></i></button>
+                                <span id="queue-display">A101</span>
+                                <button class="btn-counter" id="increment-queue"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="counter-selection">
+                            <h3>Pilih Loket Pelayanan</h3>
+                            <div class="counters-grid">
+                                <!-- Loket akan di-generate oleh JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="call-action">
+                            <h3>Panggil Antrian</h3>
+                            <p>Tekan tombol di bawah untuk memanggil antrian yang dipilih</p>
+                            <button class="btn-primary" id="call-queue">
+                                <i class="fas fa-bullhorn"></i> PANGGIL ANTRIAN
+                            </button>
+                            <div class="audio-control">
+                                <label for="volume-control">Volume Suara:</label>
+                                <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.7">
+                                <span id="volume-value">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Display Antrian Aktif -->
+                <section class="active-display">
+                    <h2><i class="fas fa-desktop"></i> Antrian yang Dipanggil</h2>
+                    <div class="current-call">
+                        <div class="call-info">
+                            <div class="call-header">
+                                <h3>ANTRIAN TERAKHIR DIPANGGIL</h3>
+                                <div class="call-time" id="last-call-time">-</div>
+                            </div>
+                            <div class="call-details">
+                                <div class="queue-called">
+                                    <span class="label">Nomor Antrian</span>
+                                    <div class="value" id="called-queue">-</div>
+                                </div>
+                                <div class="counter-called">
+                                    <span class="label">Loket Tujuan</span>
+                                    <div class="value" id="called-counter">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="history-panel">
+                            <h3><i class="fas fa-history"></i> Riwayat Pemanggilan</h3>
+                            <div class="history-list" id="history-list">
+                                <!-- Riwayat akan ditambahkan oleh JavaScript -->
+                                <div class="empty-history">Belum ada riwayat pemanggilan</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Display Loket -->
+                <section class="counters-display">
+                    <h2><i class="fas fa-list-ol"></i> Status Loket Pelayanan</h2>
+                    <div class="counters-status">
+                        <!-- Status loket akan di-generate oleh JavaScript -->
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2023 Kantor Pelayanan Administrasi Kependudukan. Sistem Antrian Pelayanan Publik.</p>
+            <p class="version">Versi 1.0 | <span id="queue-total">0</span> Antrian Dipanggil Hari Ini</p>
+        </footer>
+    </div>
+
+    <!-- Audio untuk pemanggilan -->
+    <audio id="call-sound" preload="auto">
+        <source src="" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
